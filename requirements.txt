@@ -1,0 +1,6 @@
+pynput
+scapy
+pyautogui
+cryptography
+win32crypt
+psutil
