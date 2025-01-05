@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+* {
+    font-family: "JetBrains Mono","Courier New", Courier, monospace;
+    margin: 0;
+    padding: 0;
+}
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+input {
+    display: block;
+}
+button {
+    display: inline-block;
+}
+label {
+    position: absolute;
+    margin: -11.25px 12.5px;
+    background-color: white;
+}
+input {
+    height: 37.5px;
+    width: 312.5px;
+    border: 1.875px solid grey;
+    border-radius: 6.25px;
+    font-size: 16.25px;
+    padding: 6.25px;
+}
+div {
+    margin: 20px;
+}
+form {
+    border: 2.5px solid black;
+    border-radius: 12.5px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+button {
+    height: 47.5px;
+    width: 212.5px;
+    border: 1.875px solid grey;
+    border-radius: 6.25px;
+    font-size: 16.25px;
+    padding: 6.25px;
+    background-color: white;
+    margin: 15px;
+}
+
+button:hover {
+    background-color: lightgrey;
+}
+
+h1 {
+    font-size: 45px;
+    margin: 20px;    
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  li.danger {
+    margin: 15px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  

