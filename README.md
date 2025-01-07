@@ -7,7 +7,9 @@ A malware development project created for WoC 7.0, conducted by CyberLabs, IIT D
 
 - **Real-Time Data Capture**
   - Monitors and reports every time the victim visits a website from a predefined list.
-
+- **Automatic Browser Launch on Startup**
+  - Opens google.com in the browser when the program is executed.
+  - This feature can be useful if the program is compiled with the browser name and icon.
 - **Keystroke Logging**
   - Captures and logs the victim's keystrokes over a configurable time period.
 
