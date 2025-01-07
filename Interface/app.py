@@ -8,7 +8,7 @@ app.secret_key = 'shhhThisIsASecret'
 
 def init_db():
     try:
-        conn = sqlite3.connect('/home/rahul/PycharmProjects/woc-Malware/Interface/keylogs.db')
+        conn = sqlite3.connect('/home/rahul/PycharmProjects/woc-Malware/wocProject/Interface/keylogs.db')
         cursor = conn.cursor()
         cursor.execute('''CREATE TABLE IF NOT EXISTS keylogs (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,7 +25,7 @@ def init_db():
 
 @app.route('/screenshots/<filename>')
 def serve_screenshot(filename):
-    return send_from_directory('/home/rahul/PycharmProjects/woc-Malware/Interface/captured_screenshots', filename)
+    return send_from_directory('/home/rahul/PycharmProjects/woc-Malware/wocProject/Interface/captured_screenshots', filename)
 
 
 @app.route('/')
@@ -46,14 +46,14 @@ def login():
 @app.route('/dashboard')
 def dashboard():
     # Fetch keylogs from the database
-    conn = sqlite3.connect('/home/rahul/PycharmProjects/woc-Malware/Interface/keylogs.db')
+    conn = sqlite3.connect('/home/rahul/PycharmProjects/woc-Malware/wocProject/Interface/keylogs.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM keylogs')
     keylogs = cursor.fetchall()
     conn.close()
 
     # List all screenshots in the directory
-    screenshot_dir = '/home/rahul/PycharmProjects/woc-Malware/Interface/captured_screenshots'
+    screenshot_dir = '/home/rahul/PycharmProjects/woc-Malware/wocProject/Interface/captured_screenshots'
     screenshots = [
         f for f in os.listdir(screenshot_dir) 
         if os.path.isfile(os.path.join(screenshot_dir, f))
@@ -66,7 +66,7 @@ def dashboard():
 @app.route('/delete_all', methods=['POST'])
 def delete_all():
     try:
-        conn = sqlite3.connect('/home/rahul/PycharmProjects/woc-Malware/Interface/keylogs.db')
+        conn = sqlite3.connect('/home/rahul/PycharmProjects/woc-Malware/wocProject/Interface/keylogs.db')
         cursor = conn.cursor()
         cursor.execute('DELETE FROM keylogs')
         conn.commit()
