@@ -1,4 +1,4 @@
-# Real-Time Data Capture Malware
+# SpiWare - A Real-Time Data Capture Malware
 A malware development project created for WoC 7.0, conducted by CyberLabs, IIT Dhanbad.
 
 ---
